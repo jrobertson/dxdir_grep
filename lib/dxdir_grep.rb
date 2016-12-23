@@ -21,7 +21,7 @@ class DxDirGrep
       name = x[:name]
 
       s = File.read name
-      i = s =~ /#{pattern}/m
+      i = s =~ /#{pattern}/mi
 
 
       if i then
