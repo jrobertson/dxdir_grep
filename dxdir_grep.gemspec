@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = 'dxdir_grep'
-  s.version = '0.1.1'
+  s.version = '0.1.2'
   s.summary = 'Grep a file directory.'
   s.authors = ['James Robertson']
   s.files = Dir['lib/dxdir_grep.rb']

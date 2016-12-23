@@ -9,6 +9,7 @@ class DxDirGrep
   
   def initialize(path:'.', ext: '.txt')
     
+    @path = path
     dtx = DirToXML.new path
     @dx = dtx.select_by_ext(ext)
     
@@ -20,9 +21,8 @@ class DxDirGrep
 
       name = x[:name]
 
-      s = File.read name
+      s = File.read(File.join(@path, name))
       i = s =~ /#{pattern}/mi
-
 
       if i then
         i_start = (i - 30) > 0 ? i - 30 : 0
