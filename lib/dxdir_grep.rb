@@ -7,7 +7,7 @@ require 'dir-to-xml'
 
 class DxDirGrep
   
-  def initialize(path:'.', ext: '.txt')
+  def initialize(pathx='.', path: pathx, ext: '.txt')
     
     @path = path
     dtx = DirToXML.new path
@@ -22,8 +22,8 @@ class DxDirGrep
       name = x[:name]
 
       s = File.read(File.join(@path, name))
-      i = s =~ /#{pattern}/mi
-
+      i = s.scrub =~ /#{pattern}/mi
+      
       if i then
         i_start = (i - 30) > 0 ? i - 30 : 0
         r << {name: name, preview: s.slice(i_start, 100)}
@@ -31,7 +31,7 @@ class DxDirGrep
         r
       end
     end
-    
+
     dx = Dynarex.new json_out: false
     dx.import a
     
